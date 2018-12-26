@@ -1,22 +1,52 @@
 package steps;
 
 import java.util.List;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 
 import cucumber.api.DataTable;
+import cucumber.api.Scenario;
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import utils.OperationHelper;
+import utils.Utilitiy;
 
 public class stepDefinations {
-	OperationHelper support = new OperationHelper();
-	
-	@Given("^I want to open the URL with browser$")
-	public void i_want_to_open_the_with_browser() throws Throwable {
+	Utilitiy support = new Utilitiy();
+	@Before
+	public void setup() {
 		support.launchBrowser("chrome");
 	}
 
-	@When("^I enter the invalid datas into fields at the register form$")
+	@After
+	public void teardown(Scenario scenario) {
+		if (scenario.isFailed()) {
+			try {
+				byte[] animation = ((TakesScreenshot) Utilitiy.driver).getScreenshotAs(OutputType.BYTES);
+				scenario.embed(animation, "image/png");
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(!scenario.isFailed()){
+			try {
+				byte[] animation = ((TakesScreenshot) Utilitiy.driver).getScreenshotAs(OutputType.BYTES);
+				scenario.embed(animation, "image/png");
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		Utilitiy.driver.quit();
+
+	}
+	
+	@Given("^I want to open the URL with browser$")
+	public void i_want_to_open_the_with_browser() throws Throwable {
+		support.gotoWebSite();
+	}
+
+	@When("^I enter the valid datas into fields at the register form$")
 	public void i_enter_values_into_the_form(DataTable data) throws Throwable {
 		List<List<String>> list = data.raw();
 		support.sendKeyEvent(list.get(1).get(0), list.get(1).get(1), list.get(1).get(2));
@@ -69,11 +99,5 @@ public class stepDefinations {
 		support.verifyTotalPrice(list.get(1).get(0), list.get(1).get(1), list.get(1).get(2) );
 
 	}
-	@Then("^I close the browser$")
-	public void i_close_the_browser() throws Throwable {
-		support.closeBrowser();
-	}
-
-
 
 }

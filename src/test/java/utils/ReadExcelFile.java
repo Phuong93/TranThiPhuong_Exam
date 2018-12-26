@@ -1,5 +1,4 @@
 package utils;
-
 import java.io.File;
 import java.io.FileInputStream;
 
@@ -7,7 +6,7 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class ReadExcelFile {
-	String file_name = "";
+String file_name = "";
 	
 	public ReadExcelFile(String f) {
 		file_name = f;
@@ -28,4 +27,5 @@ public class ReadExcelFile {
 		}
 		return value;
 	}
+
 }

@@ -2,15 +2,15 @@ package utils;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.FillPatternType;
-import org.apache.poi.ss.usermodel.IndexedColors;
+import org.apache.poi.ss.usermodel.Font;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.By;
@@ -24,18 +24,19 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class OperationHelper {
-	private WebDriver driver = null;
+public class Utilitiy {
+	public static WebDriver driver = null;
 	private String rootPath = System.getProperty("user.dir");
 	private final String referencesPath = "/src/test/resources/webdriver/";
+	
 	public WebDriver launchBrowser(String browserName) {
 		switch (browserName.toLowerCase()) {
 		case "chrome":
-			System.setProperty("webdriver.chrome.driver", rootPath + referencesPath + "chromedriver");
+			System.setProperty("webdriver.chrome.driver", rootPath + referencesPath + "chromedriver.exe");
 			driver = new ChromeDriver();
 			break;
 		case "firefox":
-			System.setProperty("webdriver.gecko.driver", rootPath + referencesPath + "geckodriver");
+			System.setProperty("webdriver.gecko.driver", rootPath + referencesPath + "geckodriver.exe");
 			driver = new FirefoxDriver();
 			break;
 		default:
@@ -43,13 +44,13 @@ public class OperationHelper {
 			break;
 		}
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-		// driver.manage().window().maximize();
-		ReadProperties readProperties = new ReadProperties();
-		driver.get(readProperties.getApplicationUrl("URL"));
+		driver.manage().window().maximize();
 		return driver;
 	}
-	public void quitBrowser() {
-		driver.quit();
+	
+	public void gotoWebSite() {
+		ReadProperties readProperties = new ReadProperties();
+		driver.get(readProperties.getApplicationUrl("URL"));
 	}
 
 	public WebElement getElements(String eName, String eLocator) {
@@ -72,35 +73,12 @@ public class OperationHelper {
 		return e;
 	}
 	
-	public WebElement getElementsByAnotherElement(WebElement anotherElement, String eName, String eLocator) {
-		WebElement e = null;
-		if (eName.toLowerCase().endsWith("-id")) {
-			e = anotherElement.findElement(By.id(eLocator));
-		} else if (eName.toLowerCase().endsWith("-name")) {
-			e = anotherElement.findElement(By.name(eLocator));
-		} else if (eName.toLowerCase().endsWith("-xpath")) {
-			e = anotherElement.findElement(By.xpath(eLocator));
-		} else if (eName.toLowerCase().endsWith("-class")) {
-			e = anotherElement.findElement(By.className(eLocator));
-		} else if (eName.toLowerCase().endsWith("-css")) {
-			e = anotherElement.findElement(By.cssSelector(eLocator));
-		} else if (eName.toLowerCase().endsWith("-tagname")) {
-			e = anotherElement.findElement(By.tagName(eLocator));
-		} else {
-			System.out.println("eName is invalid, please check");
-		}
-		return e;
-	}
-	
 	public void sendKeyEvent(String eName, String eLocator, String value) {
 		WebElement e = getElements(eName, eLocator);
 		e.clear();
 		e.sendKeys(value);
 	}
 	
-	public void clickEventByElement(WebElement e, String eName, String eLocator) {
-		getElementsByAnotherElement(e, eName, eLocator).click();
-	}
 	public void clickEvent(String eName, String eLocator) {
 		WebElement e = getElements(eName, eLocator);
 		e.click();
@@ -157,17 +135,24 @@ public class OperationHelper {
 		sh1.createRow(1).createCell(0).setCellValue(text);
 		sh1.getRow(1).createCell(1).setCellValue(Expected);
 		CellStyle cellStyle = wb.createCellStyle();
+		Font font = wb.createFont();
+		cellStyle.setBottomBorderColor(HSSFColor.BLACK.index);
+
         Cell cell = sh1.getRow(1).createCell(2);
 		if (text.equals(Expected)) {
-			cellStyle.setFillForegroundColor(IndexedColors.BRIGHT_GREEN.getIndex());
 			cell.setCellValue("Pass");
+			cellStyle.setFillForegroundColor(HSSFColor.GREEN.index);
+			cellStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+			cell.setCellStyle(cellStyle);
+			cellStyle.setFont(font);
 		}else {
-			cellStyle.setFillForegroundColor(IndexedColors.RED.getIndex());
 			cell.setCellValue("Fail");
+			cellStyle.setFillForegroundColor(HSSFColor.RED.index);
+			cellStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+			cell.setCellStyle(cellStyle);
+			cellStyle.setFont(font);
 		}
-		cellStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);					
 		cell.setCellStyle(cellStyle);
-		
 		FileOutputStream fout = new FileOutputStream(new File(filename));
 		wb.write(fout);
 		fout.close();
