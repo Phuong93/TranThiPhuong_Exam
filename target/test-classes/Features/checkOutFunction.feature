@@ -11,7 +11,7 @@ Feature: I create an valid account and buy products on shopping page and verify 
       | Login-link-class | login    |
     And I enter "email"
       | eName        | eLocator     | Value                        |
-      | email-txt-id | email_create | phuongtrantran42@yopmail.com |
+      | email-txt-id | email_create | phuongtrantran52@yopmail.com |
     And I click on "Create an account button"
       | eName         | eLocator     |
       | create-btn-id | SubmitCreate |

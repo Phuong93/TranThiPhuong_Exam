@@ -6,11 +6,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.FillPatternType;
-import org.apache.poi.ss.usermodel.Font;
+import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.By;
@@ -32,11 +31,11 @@ public class Utilitiy {
 	public WebDriver launchBrowser(String browserName) {
 		switch (browserName.toLowerCase()) {
 		case "chrome":
-			System.setProperty("webdriver.chrome.driver", rootPath + referencesPath + "chromedriver.exe");
+			System.setProperty("webdriver.chrome.driver", rootPath + referencesPath + "chromedriver");
 			driver = new ChromeDriver();
 			break;
 		case "firefox":
-			System.setProperty("webdriver.gecko.driver", rootPath + referencesPath + "geckodriver.exe");
+			System.setProperty("webdriver.gecko.driver", rootPath + referencesPath + "geckodriver");
 			driver = new FirefoxDriver();
 			break;
 		default:
@@ -44,7 +43,7 @@ public class Utilitiy {
 			break;
 		}
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-		driver.manage().window().maximize();
+//		driver.manage().window().maximize();
 		return driver;
 	}
 	
@@ -135,24 +134,18 @@ public class Utilitiy {
 		sh1.createRow(1).createCell(0).setCellValue(text);
 		sh1.getRow(1).createCell(1).setCellValue(Expected);
 		CellStyle cellStyle = wb.createCellStyle();
-		Font font = wb.createFont();
-		cellStyle.setBottomBorderColor(HSSFColor.BLACK.index);
 
         Cell cell = sh1.getRow(1).createCell(2);
 		if (text.equals(Expected)) {
 			cell.setCellValue("Pass");
-			cellStyle.setFillForegroundColor(HSSFColor.GREEN.index);
-			cellStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
-			cell.setCellStyle(cellStyle);
-			cellStyle.setFont(font);
-		}else {
+			cellStyle.setFillForegroundColor(IndexedColors.GREEN.getIndex());
+		}else {			
+			cellStyle.setFillForegroundColor(IndexedColors.RED.getIndex());
 			cell.setCellValue("Fail");
-			cellStyle.setFillForegroundColor(HSSFColor.RED.index);
-			cellStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
-			cell.setCellStyle(cellStyle);
-			cellStyle.setFont(font);
 		}
+		cellStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
 		cell.setCellStyle(cellStyle);
+		
 		FileOutputStream fout = new FileOutputStream(new File(filename));
 		wb.write(fout);
 		fout.close();

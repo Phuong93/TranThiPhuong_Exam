@@ -2,7 +2,7 @@ $(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.
 formatter.feature({
   "line": 2,
   "name": "I create an valid account and buy products on shopping page and verify total prices after checkout",
-  "description": "As a valid User\r\nI need to buy 2 products as ramdom\r\nSo that I can see the total prices after my check out.",
+  "description": "As a valid User\nI need to buy 2 products as ramdom\nSo that I can see the total prices after my check out.",
   "id": "i-create-an-valid-account-and-buy-products-on-shopping-page-and-verify-total-prices-after-checkout",
   "keyword": "Feature",
   "tags": [
@@ -13,7 +13,7 @@ formatter.feature({
   ]
 });
 formatter.before({
-  "duration": 6255710100,
+  "duration": 5533182009,
   "status": "passed"
 });
 formatter.scenario({
@@ -66,7 +66,7 @@ formatter.step({
       "cells": [
         "email-txt-id",
         "email_create",
-        "phuongtrantran42@yopmail.com"
+        "phuongtrantran52@yopmail.com"
       ],
       "line": 14
     }
@@ -654,7 +654,7 @@ formatter.match({
   "location": "stepDefinations.i_want_to_open_the_with_browser()"
 });
 formatter.result({
-  "duration": 6493426701,
+  "duration": 6681332101,
   "status": "passed"
 });
 formatter.match({
@@ -667,7 +667,7 @@ formatter.match({
   "location": "stepDefinations.i_click_on(String,DataTable)"
 });
 formatter.result({
-  "duration": 2248158200,
+  "duration": 2496524885,
   "status": "passed"
 });
 formatter.match({
@@ -680,7 +680,7 @@ formatter.match({
   "location": "stepDefinations.i_enter_postal_code_as(String,DataTable)"
 });
 formatter.result({
-  "duration": 142521800,
+  "duration": 324689439,
   "status": "passed"
 });
 formatter.match({
@@ -693,7 +693,7 @@ formatter.match({
   "location": "stepDefinations.i_click_on(String,DataTable)"
 });
 formatter.result({
-  "duration": 86712200,
+  "duration": 105920155,
   "status": "passed"
 });
 formatter.match({
@@ -706,14 +706,14 @@ formatter.match({
   "location": "stepDefinations.i_click_on(String,DataTable)"
 });
 formatter.result({
-  "duration": 1448809100,
+  "duration": 1950660580,
   "status": "passed"
 });
 formatter.match({
   "location": "stepDefinations.i_enter_values_into_the_form(DataTable)"
 });
 formatter.result({
-  "duration": 710519900,
+  "duration": 1030147110,
   "status": "passed"
 });
 formatter.match({
@@ -726,7 +726,7 @@ formatter.match({
   "location": "stepDefinations.i_select_the_state_as(String,DataTable)"
 });
 formatter.result({
-  "duration": 97532500,
+  "duration": 200712904,
   "status": "passed"
 });
 formatter.match({
@@ -739,7 +739,7 @@ formatter.match({
   "location": "stepDefinations.i_enter_postal_code_as(String,DataTable)"
 });
 formatter.result({
-  "duration": 87076199,
+  "duration": 114585264,
   "status": "passed"
 });
 formatter.match({
@@ -752,7 +752,7 @@ formatter.match({
   "location": "stepDefinations.i_select_the_state_as(String,DataTable)"
 });
 formatter.result({
-  "duration": 52378400,
+  "duration": 64556567,
   "status": "passed"
 });
 formatter.match({
@@ -765,7 +765,7 @@ formatter.match({
   "location": "stepDefinations.i_enter_postal_code_as(String,DataTable)"
 });
 formatter.result({
-  "duration": 110212401,
+  "duration": 158458570,
   "status": "passed"
 });
 formatter.match({
@@ -778,7 +778,7 @@ formatter.match({
   "location": "stepDefinations.i_click_on(String,DataTable)"
 });
 formatter.result({
-  "duration": 1892707100,
+  "duration": 1488758477,
   "status": "passed"
 });
 formatter.match({
@@ -791,7 +791,7 @@ formatter.match({
   "location": "stepDefinations.i_click_on(String,DataTable)"
 });
 formatter.result({
-  "duration": 1753379500,
+  "duration": 2188126504,
   "status": "passed"
 });
 formatter.match({
@@ -804,7 +804,7 @@ formatter.match({
   "location": "stepDefinations.i_move_to(String,DataTable)"
 });
 formatter.result({
-  "duration": 37178701,
+  "duration": 559607271,
   "status": "passed"
 });
 formatter.match({
@@ -817,7 +817,7 @@ formatter.match({
   "location": "stepDefinations.i_hover_on(String,DataTable)"
 });
 formatter.result({
-  "duration": 1112476300,
+  "duration": 1496567816,
   "status": "passed"
 });
 formatter.match({
@@ -830,7 +830,7 @@ formatter.match({
   "location": "stepDefinations.i_click_on(String,DataTable)"
 });
 formatter.result({
-  "duration": 108805399,
+  "duration": 64919040,
   "status": "passed"
 });
 formatter.match({
@@ -843,7 +843,7 @@ formatter.match({
   "location": "stepDefinations.i_wait_to_see(String,DataTable)"
 });
 formatter.result({
-  "duration": 1095482900,
+  "duration": 1105725504,
   "status": "passed"
 });
 formatter.match({
@@ -856,7 +856,7 @@ formatter.match({
   "location": "stepDefinations.i_click_on(String,DataTable)"
 });
 formatter.result({
-  "duration": 80078600,
+  "duration": 106255417,
   "status": "passed"
 });
 formatter.match({
@@ -869,7 +869,7 @@ formatter.match({
   "location": "stepDefinations.i_hover_on(String,DataTable)"
 });
 formatter.result({
-  "duration": 1044793700,
+  "duration": 1097310918,
   "status": "passed"
 });
 formatter.match({
@@ -882,7 +882,7 @@ formatter.match({
   "location": "stepDefinations.i_click_on(String,DataTable)"
 });
 formatter.result({
-  "duration": 68788801,
+  "duration": 60943253,
   "status": "passed"
 });
 formatter.match({
@@ -895,7 +895,7 @@ formatter.match({
   "location": "stepDefinations.i_wait_to_see(String,DataTable)"
 });
 formatter.result({
-  "duration": 1107104001,
+  "duration": 1077715929,
   "status": "passed"
 });
 formatter.match({
@@ -908,7 +908,7 @@ formatter.match({
   "location": "stepDefinations.i_click_on(String,DataTable)"
 });
 formatter.result({
-  "duration": 3020937100,
+  "duration": 2484632325,
   "status": "passed"
 });
 formatter.match({
@@ -921,7 +921,7 @@ formatter.match({
   "location": "stepDefinations.i_click_on(String,DataTable)"
 });
 formatter.result({
-  "duration": 1459260700,
+  "duration": 2511225468,
   "status": "passed"
 });
 formatter.match({
@@ -934,7 +934,7 @@ formatter.match({
   "location": "stepDefinations.i_click_on(String,DataTable)"
 });
 formatter.result({
-  "duration": 1272533400,
+  "duration": 1276933445,
   "status": "passed"
 });
 formatter.match({
@@ -947,7 +947,7 @@ formatter.match({
   "location": "stepDefinations.i_click_on(String,DataTable)"
 });
 formatter.result({
-  "duration": 63226700,
+  "duration": 83747160,
   "status": "passed"
 });
 formatter.match({
@@ -960,7 +960,7 @@ formatter.match({
   "location": "stepDefinations.i_click_on(String,DataTable)"
 });
 formatter.result({
-  "duration": 1485394600,
+  "duration": 1597422474,
   "status": "passed"
 });
 formatter.match({
@@ -973,14 +973,14 @@ formatter.match({
   "location": "stepDefinations.i_click_on(String,DataTable)"
 });
 formatter.result({
-  "duration": 1140155900,
+  "duration": 1164824886,
   "status": "passed"
 });
 formatter.match({
   "location": "stepDefinations.i_verify_the_total_price(DataTable)"
 });
 formatter.result({
-  "duration": 668283300,
+  "duration": 2091928578,
   "status": "passed"
 });
 formatter.match({
@@ -993,12 +993,12 @@ formatter.match({
   "location": "stepDefinations.i_click_on(String,DataTable)"
 });
 formatter.result({
-  "duration": 1655386000,
+  "duration": 1806192467,
   "status": "passed"
 });
 formatter.embedding("image/png", "embedded0.png");
 formatter.after({
-  "duration": 1319411701,
+  "duration": 755121819,
   "status": "passed"
 });
 });
